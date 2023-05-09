@@ -23,9 +23,9 @@ function addTask () {
 function markDone (item) { 
       item.className = 'finished';
 }
-  
-function remove (item) {
+
 // remove item completely from document
+function remove (item) {
     if(item.className == 'finished')
          item.remove();
 }
@@ -34,19 +34,16 @@ function remove (item) {
 function important (item) {
     item.className = "important"
 }
-  
+
+// show about and change color 
 function doAbout() {
     var div = document.getElementById("divabout");
-    var p = document.createElement("p");
-    p.innerHTML = '<p>Author is danielvillam</>';
-    // add new p
-    document.getElementById("divabout").appendChild(p);  
+    div.innerHTML = "Author is danielvillam"; 
     div.className = 'aboutcolor';
 }
-  
+
+// clear about
 function clearAbout() {
     var div = document.getElementById("divabout");
-    if(div.className == 'aboutcolor'){
-        document.getElementById("divabout").innerHTML = "";   
-    }
+    div.innerHTML = "";   
 }

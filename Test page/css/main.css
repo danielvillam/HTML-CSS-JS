@@ -1,9 +1,7 @@
 /* remove indentation of list items */
-
 ul {
   padding-left: 0;
 }
-
 
 /* remove traditional bullet from front of list items */
 li {
@@ -14,16 +12,15 @@ li {
   font-size: 20px;
 }
 
-
-
+/*class  for button color (markDone)*/
 .done {
     background-color: green;
 }
 
+/*class  for button color (remove)*/
 .remove {
     background-color: red;
 }
-
 
 /* mark task as finished */
 li.finished {
