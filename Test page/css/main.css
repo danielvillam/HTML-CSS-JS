@@ -6,7 +6,6 @@ ul {
 
 
 /* remove traditional bullet from front of list items */
-/* Step 3 below here */
 li {
   list-style-type: none;
   background-color: #eee;
@@ -16,16 +15,21 @@ li {
 }
 
 
-/* Step 5 below here */
+
 .done {
-  
+    background-color: green;
+}
+
+.remove {
+    background-color: red;
 }
 
 
 /* mark task as finished */
-/* Step 6 below here */
 li.finished {
-  
+  color: white;
+  background-color: gray;
+  text-decoration: line-through;
 }
 
 input[type="text"] {
@@ -43,13 +47,16 @@ input[type="button"] {
   padding: 10px;
 }
 
-/* Step 10 below here */
-.yellowbackground {
-  
+.aboutcolor{
+    background-color: yellow;
 }
 
+.important{
+    background-color: lightblue;
+}
 
-/* Step 12 below here */
 #divabout {
-  
+    width: 300px;
+    font-size: 20px;
+    margin: 10px;
 }

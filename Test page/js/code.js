@@ -10,35 +10,43 @@ function addTask () {
       // Note, need to use '' because of "" in HTML
       item.innerHTML = '<input type="button" class="done" onclick="markDone(this.parentNode)" value="&#x2713;" /> ' + 
       '<input type="button" class="remove" onclick="remove(this.parentNode)" value="&#x2715;" /> ' +
+      '<input type="button" class="important" onclick="important(this.parentNode)" value="&#x01C3;" />' +
       newTask;
       // add new item as part of existing list
       document.getElementById("tasks").appendChild(item);  
-      
-       /* Step 4 below here */
-      
+      input.value = "";
+      input.placeholder = "enter next task …";
     }
   }
   
-  
-  
-  // change styling used for given item
-  function markDone (item) { 
+// change styling used for given item
+function markDone (item) { 
       item.className = 'finished';
-  }
+}
   
-  /* Step 7 below here */
-  function remove (item) {
-    // remove item completely from document
+function remove (item) {
+// remove item completely from document
+    if(item.className == 'finished')
          item.remove();
-  }
+}
+
+// highlight item from document
+function important (item) {
+    item.className = "important"
+}
   
-  /* Step 11 below here */
-  function doAbout() {
-    
-    
-  }
+function doAbout() {
+    var div = document.getElementById("divabout");
+    var p = document.createElement("p");
+    p.innerHTML = '<p>Author is danielvillam</>';
+    // add new p
+    document.getElementById("divabout").appendChild(p);  
+    div.className = 'aboutcolor';
+}
   
-  /* Step 14 below here */
-  function clearAbout() {
-    
-  }
+function clearAbout() {
+    var div = document.getElementById("divabout");
+    if(div.className == 'aboutcolor'){
+        document.getElementById("divabout").innerHTML = "";   
+    }
+}

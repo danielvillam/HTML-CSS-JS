@@ -1,3 +1,7 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<script src="js/code.js"></script>
+
 <h1 id="myHeader">TO DO List</h1>
 
 <!-- STEPs 1 and 2 below here  -->
@@ -9,12 +13,12 @@
   <li>
     <input type="button" class="done" onclick="markDone(this.parentNode)" value="&#x2713;" />
     <input type="button" class="remove" onclick="remove(this.parentNode)" value="&#x2715;" />
+    <input type="button" class="important" onclick="important(this.parentNode)" value="&#x01C3;" />
     make todo list
   </li>
   
     </ul>
 <hr>
-<!-- STEPs 8 and 9 below here  -->
- 
-    
- <!-- STEP 13 below here  -->
+<div id="divabout"></div>
+<input type="button" value="About" onclick="doAbout()" />
+<input type="button" value="Clear" onclick="clearAbout()" />
