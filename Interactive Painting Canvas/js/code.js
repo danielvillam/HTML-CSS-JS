@@ -49,3 +49,12 @@ function doPaint(x, y){
         paintCircle(x,y);
     }
 }
+
+function changeColor(newColor){
+  color = newColor;
+}
+
+function resizeBrush(newSize){
+  radius = newSize;
+  document.getElementById("sizeOutput").value = newSize
+}
