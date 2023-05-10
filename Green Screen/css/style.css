@@ -6,3 +6,10 @@ canvas {
 input { 
     font-size: 14pt;
 }
+
+body {
+    background-color: wheat;
+    font-family: Verdana;
+    margin: 40px;
+  }
+  
