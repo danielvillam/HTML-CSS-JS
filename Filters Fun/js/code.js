@@ -1,5 +1,6 @@
 var grayImage = null;
 var redImage = null;
+var myImage = null;
 var image = null;
 var canvas;
 var fileinput = null;
@@ -40,6 +41,19 @@ function makeRed(){
     }
 }
 
+// change image to red
+function makeMyFilter(){
+    myImage = image;
+    var line = myImage.getWidth()/9;
+    for(var pixel of myImage.values()){
+        if(pixel.getX()<line || pixel.getX()>line*2 && pixel.getX()<line*3 || pixel.getX()>line*4 && pixel.getX()<line*5 || pixel.getX()>line*6 && pixel.getX()<line*7 || pixel.getX()>line*8){
+            var avg = (pixel.getRed()+pixel.getGreen()+pixel.getBlue())/3;
+            pixel.setRed(avg+40);
+            pixel.setGreen(avg+40);
+        }
+    }
+}
+
 // draw grayscale image
 function doGray() {
     if ( imageIsLoaded() ) {     // check if image is loaded
@@ -55,6 +69,16 @@ function doGray() {
     if ( imageIsLoaded() ) {     // check if image is loaded
         makeRed();	                      // function performs the grayscale work
         redImage.drawTo(canvas);	          // display image
+    }else{
+        alert("Image not loaded")
+    }
+  }
+
+  // draw red image
+  function doMyFilter() {
+    if ( imageIsLoaded() ) {     // check if image is loaded
+        makeMyFilter();	                      // function performs the grayscale work
+        myImage.drawTo(canvas);	          // display image
     }else{
         alert("Image not loaded")
     }
