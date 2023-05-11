@@ -1,12 +1,13 @@
-var grayImage;
-var redImage;
+var grayImage = null;
+var redImage = null;
 var image = null;
-var canvas = null;
+var canvas;
+var fileinput = null;
 
 // upload image to canvas1
 function upload(){
     canvas = document.getElementById("can");
-    var fileinput = document.getElementById("finput");
+    fileinput = document.getElementById("finput");
     image = new SimpleImage(fileinput);
     image.drawTo(canvas);
 }
@@ -22,6 +23,14 @@ function makeGray(){
     }
 }
 
+// change image to red
+function makeRed(){
+    redImage = image;
+    for(var pixel of redImage.values()){
+        pixel.setRed(255);
+    }
+}
+
 // draw grayscale image
 function doGray() {
     if ( imageIsLoaded() ) {     // check if image is loaded
@@ -32,11 +41,32 @@ function doGray() {
     }
   }
 
+  // draw red image
+  function doRed() {
+    if ( imageIsLoaded() ) {     // check if image is loaded
+        makeRed();	                      // function performs the grayscale work
+        redImage.drawTo(canvas);	          // display image
+    }else{
+        alert("Image not loaded")
+    }
+  }
+
   // check if there is an image uploaded
   function imageIsLoaded(){
-    if(image != null){
+    if(fileinput != null){
         return true;
     }else{
         return false;
+    }
+  }
+
+  function resetImage(){
+    if ( imageIsLoaded() ) {     // check if image is loaded
+        image = new SimpleImage(fileinput);
+        image.drawTo(canvas);	          // display image
+        grayImage = null;
+        redImage = null;
+    }else{
+        alert("Image not loaded")
     }
   }
