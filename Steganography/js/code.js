@@ -17,8 +17,6 @@ function loadHideImage() {
   hideImage.drawTo(hideCanvas);
 }
 
-
-
 function doCombine() {
   //check that images are loaded
   if (startImage == null  || ! startImage.complete()) {
@@ -27,10 +25,13 @@ function doCombine() {
   if (hideImage == null || ! hideImage.complete()) {
     alert("Hide image not loaded");
   }
-  // clear canvases
+  //clear canvases
   clearCanvas();
+  //crop image if they are of different sizes, taking the smaller one
+  doCrop();
   startImage = chop2hide(startImage);
   hideImage = shift(hideImage);
+
   var finalImage = combine(startImage,hideImage);
   finalImage.drawTo(startCanvas);
 }
@@ -98,4 +99,32 @@ function combine(show,hide){
   }
   //after doing each pixel, return ans answer of the image we called "answer"
   return answer;
+}
+
+function crop(image, width, height){
+  var n = new SimpleImage(width,height);
+  for(var p of image.values()){
+     var x = p.getX();
+     var y = p.getY();
+     if (x < width && y < height){
+      var np = n.getPixel(x,y);
+      np.setRed(p.getRed());
+      np.setBlue(p.getBlue());
+      np.setGreen(p.getGreen()); 
+    }
+  }
+  return n;
+}
+
+function doCrop(){
+  var cropWidth = startImage.getWidth();
+  if (hideImage.getWidth() < cropWidth) {
+	  cropWidth = hideImage.getWidth();
+  }
+  var cropHeight = startImage.getHeight();
+  if (hideImage.getHeight() < cropHeight) {
+	  cropHeight = hideImage.getHeight();
+  }
+  startImage = crop(startImage,cropWidth, cropHeight);
+  hideImage = crop(hideImage,cropWidth, cropHeight);
 }
